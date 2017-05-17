@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>Object Oriented Javascript</section>
+        <!-- Slide 1 -->
+				<section data-markdown>
+        <!-- Slide 2 -->
+          What is it.  Why would you use it, when is is useful.  How do
+          you use it?  Show examples, (Animals) and work through demo.</section>
+        <section data-markdown>
+        <!-- Slide 3 -->
+          Basics of OOP
+
+          What is an `Object`?.  An `Object` Allow us to represent the things
+          from the real world in code, and hold useful information about that
+          particular object.
+
+          Creating a basic Object.
+
+          ```js
+            var myObject = {}
+          ```
+        </section>
+        <section data-markdown>
+          Within our `Objects`, we have `properties` and `values`
+          Think of a property as a name or category for the information inside
+          of `value`. We create our properties like:
+          
+          ```js
+            myObject = {
+              myFirstProperty: "first property value",
+              mySecodProperty: "second property value"
+            }
+          ```
+        <!-- Slide 4 -->
+        </section>
+        <section data-markdown>
+          Generic examples are boring, so let's create an `Object` with some
+          information about ourselves
+
+          ```js
+          var cody = {
+            age: 31,
+            profession: 'Software Developer',
+            location: 'Denver, CO'
+          }
+          ```
+          To access the value of a property of an `Object`, we just need to
+          (you can also call it like object["propertyName"])
+          call the property name on the Object
+          (syntax highlighting looks like shit)
+
+          ```  
+            > cody.age
+            31
+            > cody.profession
+            'Sofware Developer'
+          ```
+
+            
+        <!--     "Does it make sense to talk about a console and trying to run -->
+        <!--     commands and things like that while i'm programming?  They may not -->
+        <!--     have even seen node yet." -->
+        </section>
+        <section data-markdown>
+          So far, we've beeen creating our objects using the _object literal
+          notation_.  
+
+          We can also use what's called a _constructor_.  To create a new object
+          using a _constructor_  The example from above can be created with a
+          constructor like 
+
+          ```js
+          var cody = new Object();
+          cody.age = 31
+          cody.profession = "Software Developer"
+          ```
+        </section>
+        <section data-markdown>
+          In the previous example, we used a built in constructor called `Object`
+          This creates a new object with no properties or methods.  We had
+          to set our properties one at a time.
+
+          ```js
+            var emptyObject = new Object();
+            Object.getOwnPropertyNames(emptyObject);
+            (this might be too much?)
+            []
+          ```
+        </section>
+        <section data-markdown>
+          Setting these values one at a time gets old pretty quick.  Let's make
+          our own constructor for a `Person`
+
+          ```js
+          function Person(age, profession) {
+            this.age = age;
+            this.profession = profession;
+          }
+
+          var rick = new Person(53, 'Scientist')
+          rick.age
+          53
+          rick.profession
+          'Scientist'
+          ```
+        </section>
+        <section data-markdown>
+          We dont have to rely on the values passed to the constructor, meaning
+          we can set a default value for each new Object we create with our
+          constructor
+
+          ```js
+          function Person(age, profession) {
+            this.age = age;
+            this.profession = profession;
+            this.school = "Turing School of Software and Design"
+          }
+
+          var john = new Person(28, "Baker");
+          john.school
+          "Turing School of Software and Design"
+          ```
+        </section>
+        <section data-markdown>
+          Now, we're starting seeing the benefits ot Object Oriented
+          Programming.  We're creating a default value we dont have to worry
+          about setting across all of our objects.  We're not just limited to
+          setting values for properties, we can also create methods in our
+          constructor that will be available in new objects created from the
+          constructor.
+        </section>
+        <section data-markdown>
+          ```js
+          function Person(age, profession) {
+            this.age = age;
+            this.profession = profession;
+            this.school = "Turing School of Software and Design"
+            this.bio = function() {
+              return "My name is " + this.name + " and I am " + this.age + "
+              years old".  Right now I am a " + this.profession + ". I'm
+              currently studying at " + this.school
+            }
+          }
+          ```
+        </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
